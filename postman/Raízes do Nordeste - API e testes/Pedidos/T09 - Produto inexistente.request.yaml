@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/pedidos"
+method: POST
+headers:
+  Authorization: Bearer {{tokenCliente}}
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"unidadeId":1,"canalPedido":"WEB","itens":[{"produtoId":9999,"quantidade":1}],"formaPagamento":"MOCK"}'
+scripts:
+  - type: afterResponse
+    code: pm.test('404 produto', () => pm.response.to.have.status(404));
+order: 3000

@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/auth/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"email":"cliente@raizes.com","senha":"Senha@123"}'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('200 e token', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().accessToken).to.be.a('string'); });
+      pm.collectionVariables.set('tokenCliente', pm.response.json().accessToken);
+order: 1000

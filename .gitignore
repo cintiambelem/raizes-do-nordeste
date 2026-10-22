@@ -1,0 +1,26 @@
+# Maven build output
+target/
+
+# Local H2 database files
+data/*
+!data/.gitkeep
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Java tooling
+*.class
+hs_err_pid*
+

@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/pedidos"
+method: POST
+headers:
+  Authorization: Bearer {{tokenCliente}}
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"unidadeId":{{unidadeId}},"canalPedido":"APP","itens":[{"produtoId":1,"quantidade":1}],"formaPagamento":"MOCK"}'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('201 pedido', () => pm.response.to.have.status(201));
+      pm.collectionVariables.set('pedidoId', pm.response.json().pedidoId);
+order: 1000

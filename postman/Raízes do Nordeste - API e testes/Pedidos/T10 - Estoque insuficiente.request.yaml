@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/pedidos"
+method: POST
+headers:
+  Authorization: Bearer {{tokenCliente}}
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"unidadeId":1,"canalPedido":"TOTEM","itens":[{"produtoId":1,"quantidade":999}],"formaPagamento":"MOCK"}'
+scripts:
+  - type: afterResponse
+    code: pm.test('409 estoque', () => pm.response.to.have.status(409));
+order: 4000

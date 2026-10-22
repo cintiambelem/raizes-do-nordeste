@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/pedidos"
+method: POST
+headers:
+  Authorization: Bearer {{tokenCliente}}
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"unidadeId":1,"itens":[{"produtoId":1,"quantidade":1}],"formaPagamento":"MOCK"}'
+scripts:
+  - type: afterResponse
+    code: pm.test('422 validacao', () => pm.response.to.have.status(422));
+order: 2000

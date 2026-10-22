@@ -1,0 +1,9 @@
+$kind: collection
+description: ""
+variables:
+  baseUrl: http://localhost:8080
+  tokenCliente: ""
+  tokenGerente: ""
+  unidadeId: "1"
+  pedidoId: ""
+  pedidoRecusadoId: ""

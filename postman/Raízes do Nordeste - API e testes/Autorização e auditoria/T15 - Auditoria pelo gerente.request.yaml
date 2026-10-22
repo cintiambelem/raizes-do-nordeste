@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{baseUrl}}/auditoria"
+method: GET
+headers:
+  Authorization: Bearer {{tokenGerente}}
+scripts:
+  - type: afterResponse
+    code: pm.test('200 auditoria', () => pm.response.to.have.status(200));
+order: 2000

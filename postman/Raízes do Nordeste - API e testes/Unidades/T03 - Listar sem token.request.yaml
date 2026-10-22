@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/unidades"
+method: GET
+scripts:
+  - type: afterResponse
+    code: pm.test('401 sem token', () => pm.response.to.have.status(401));
+order: 1000

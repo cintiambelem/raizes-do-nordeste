@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/pagamentos/mock"
+method: POST
+headers:
+  Authorization: Bearer {{tokenCliente}}
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"pedidoId":{{pedidoRecusadoId}},"aprovado":false}'
+scripts:
+  - type: afterResponse
+    code: pm.test('200 recusado', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().status).to.eql('RECUSADO'); });
+order: 3000

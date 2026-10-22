@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{baseUrl}}/unidades"
+method: GET
+headers:
+  Authorization: Bearer {{tokenCliente}}
+scripts:
+  - type: afterResponse
+    code: pm.test('200 unidades', () => pm.response.to.have.status(200));
+order: 2000

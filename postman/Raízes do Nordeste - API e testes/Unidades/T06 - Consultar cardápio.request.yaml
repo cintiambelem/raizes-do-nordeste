@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{baseUrl}}/unidades/{{unidadeId}}/cardapio"
+method: GET
+headers:
+  Authorization: Bearer {{tokenCliente}}
+scripts:
+  - type: afterResponse
+    code: pm.test('200 cardapio', () => pm.response.to.have.status(200));
+order: 3000

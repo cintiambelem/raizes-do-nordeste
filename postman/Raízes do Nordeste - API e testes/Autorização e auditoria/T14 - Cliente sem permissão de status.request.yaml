@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/pedidos/{{pedidoId}}/status"
+method: PATCH
+headers:
+  Authorization: Bearer {{tokenCliente}}
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"status":"PRONTO"}'
+scripts:
+  - type: afterResponse
+    code: pm.test('403 role', () => pm.response.to.have.status(403));
+order: 1000
